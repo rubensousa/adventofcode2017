@@ -24,8 +24,8 @@ object Day01 {
             if (nextIndex >= number.length) {
                 nextIndex -= number.length
             }
-            val n1 = number[i] - '0'
-            val n2 = number[nextIndex] - '0'
+            val n1 = Character.getNumericValue(number[i])
+            val n2 = Character.getNumericValue(number[nextIndex])
             if (n1 == n2) {
                 sum += n1
             }
@@ -43,8 +43,8 @@ object Day01 {
             if (nextIndex >= number.length) {
                 nextIndex -= number.length
             }
-            val n1 = number[i] - '0'
-            val n2 = number[nextIndex] - '0'
+            val n1 = Character.getNumericValue(number[i])
+            val n2 = Character.getNumericValue(number[nextIndex])
             if (n1 == n2) {
                 sum += n1
             }
