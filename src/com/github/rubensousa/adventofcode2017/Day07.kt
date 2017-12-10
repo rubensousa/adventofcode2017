@@ -7,7 +7,7 @@ import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 
-object Day7 {
+object Day07 {
 
     class Node {
         var head: Boolean = false
@@ -23,7 +23,7 @@ object Day7 {
     @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val bufferedReader = BufferedReader(FileReader("inputday7.txt"))
+        val bufferedReader = BufferedReader(FileReader("inputday07.txt"))
         var line: String? = bufferedReader.readLine()
         val nodes = ArrayList<Node>()
         val nodeMap = LinkedHashMap<String, Node>()

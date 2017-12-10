@@ -7,12 +7,12 @@ import java.io.IOException
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 
-object Day6 {
+object Day06 {
 
     @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val bufferedReader = BufferedReader(FileReader("inputday6.txt"))
+        val bufferedReader = BufferedReader(FileReader("inputday06.txt"))
         val line = bufferedReader.readLine()
         val data = line.split("\t")
         val array = ArrayList<Int>()

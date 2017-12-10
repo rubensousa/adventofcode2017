@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-object Day8 {
+object Day08 {
 
     val GREATER_THAN = ">"
     val GREATER_OR_EQUAL_THAN = ">="
@@ -29,7 +29,7 @@ object Day8 {
     @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val bufferedReader = BufferedReader(FileReader("inputday8.txt"))
+        val bufferedReader = BufferedReader(FileReader("inputday08.txt"))
         var line: String? = bufferedReader.readLine()
         val instructions = ArrayList<Instruction>()
         val registers = HashMap<String, Int>()

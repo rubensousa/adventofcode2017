@@ -7,12 +7,12 @@ import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 
-object Day9 {
+object Day09 {
 
     @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val bufferedReader = BufferedReader(FileReader("inputday9.txt"))
+        val bufferedReader = BufferedReader(FileReader("inputday09.txt"))
         var line: String? = bufferedReader.readLine()
         if (line != null) {
             println(getScore(line))
