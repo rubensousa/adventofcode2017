@@ -29,7 +29,7 @@ object Day8 {
     @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val bufferedReader = BufferedReader(FileReader("input.txt"))
+        val bufferedReader = BufferedReader(FileReader("inputday8.txt"))
         var line: String? = bufferedReader.readLine()
         val instructions = ArrayList<Instruction>()
         val registers = HashMap<String, Int>()
@@ -39,6 +39,12 @@ object Day8 {
             registers.put(instruction.register, 0)
             instructions.add(instruction)
             line = bufferedReader.readLine()
+        }
+
+        println(getGreatestRegister(instructions, registers))
+
+        for (key in registers.keys) {
+            registers.put(key, 0)
         }
 
         println(getGreatestRegisterDuring(instructions, registers))
