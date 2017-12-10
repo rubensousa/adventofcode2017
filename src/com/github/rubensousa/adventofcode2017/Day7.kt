@@ -23,7 +23,7 @@ object Day7 {
     @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val bufferedReader = BufferedReader(FileReader("input.txt"))
+        val bufferedReader = BufferedReader(FileReader("inputday7.txt"))
         var line: String? = bufferedReader.readLine()
         val nodes = ArrayList<Node>()
         val nodeMap = LinkedHashMap<String, Node>()
@@ -63,9 +63,6 @@ object Day7 {
         for (child in head.childNodes) {
             val weight = getWeight(child)
             if (!weights.contains(weight)) {
-                if (correctWeight != 0) {
-                    incorrectWeight = weight
-                }
                 weights.add(weight)
             } else {
                 correctWeight = weight
@@ -109,13 +106,11 @@ object Day7 {
     }
 
     private fun parseNode(text: String, map: MutableMap<String, Node>): Node {
-        val data = text.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-
+        val data = text.split(" ".toRegex())
         val node = Node()
         node.word = data[0]
         node.weight = Integer.parseInt(data[1].replace("\\(".toRegex(), "").replace("\\)".toRegex(), ""))
         map.put(node.word, node)
-
         for (i in 3 until data.size) {
             val word = data[i].replace(",".toRegex(), "")
             var child: Node? = map[word]
@@ -125,15 +120,19 @@ object Day7 {
             }
             node.childNodes.add(child)
         }
-
         return node
     }
 
+    /**
+     * The bottom program will be the only program
+     * that won't appear inside other program's childs
+     */
     private fun getBottomProgram(nodes: List<Node>): Node? {
         for (i in 0 until nodes.size - 1) {
             val node = nodes[i]
             var found = false
-            searchNode@ for (j in nodes.indices) {
+            searchNode@
+            for (j in nodes.indices) {
                 val childNodes = nodes[j].childNodes
                 for (n in childNodes) {
                     if (n.word == node.word) {
