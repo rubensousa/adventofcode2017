@@ -11,10 +11,18 @@ object Day10 {
     @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val bufferedReader = BufferedReader(FileReader("input.txt"))
-        var line: String? = bufferedReader.readLine()
-        val data = line?.toCharArray()
+        val bufferedReader = BufferedReader(FileReader("inputday10.txt"))
+        val line: String? = bufferedReader.readLine()
         val lengths = ArrayList<Int>()
+        val numbers = line?.split(",")
+        if (numbers != null) {
+            for(number in numbers){
+                lengths.add(number.toInt())
+            }
+            println(getResult(lengths))
+        }
+        lengths.clear()
+        val data = line?.toCharArray()
         if (data != null) {
             for (number in data) {
                 lengths.add(number.toInt())
@@ -24,12 +32,11 @@ object Day10 {
             lengths.add(73)
             lengths.add(47)
             lengths.add(23)
-            //println(getResult(lengths))
             println(getHash(lengths))
         }
     }
 
-    private fun generateArray() : IntArray{
+    private fun generateArray(): IntArray {
         val array = IntArray(256)
 
         for (i in 0 until array.size) {
@@ -97,21 +104,22 @@ object Day10 {
     }
 
     private fun reverse(position: Int, length: Int, array: IntArray) {
-        val reversed = IntArray(length)
-        var index = position
-        for (i in 0 until length) {
-            reversed[reversed.size - 1 - i] = array[index]
-            index++
-            if (index == array.size) {
-                index = 0
-            }
+        var low = position
+        var high = position + length - 1
+        if (high >= array.size) {
+            high -= array.size
         }
-        index = position
-        for (i in 0 until length) {
-            array[index] = reversed[i]
-            index++
-            if (index == array.size) {
-                index = 0
+        for (i in 0 until length / 2) {
+            val tmp = array[low]
+            array[low] = array[high]
+            array[high] = tmp
+            low++
+            high--
+            if (high < 0) {
+                high = array.size - 1
+            }
+            if (low >= array.size) {
+                low -= array.size
             }
         }
     }
