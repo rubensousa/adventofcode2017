@@ -15,7 +15,7 @@ object Day02 {
         while (line != null) {
             val tempArray = ArrayList<Int>()
             val numbers = line.split(" ")
-            for(number in numbers){
+            for (number in numbers) {
                 tempArray.add(number.toInt())
             }
             array.add(tempArray)
@@ -31,8 +31,8 @@ object Day02 {
             var min = Integer.MAX_VALUE
             var max = Integer.MIN_VALUE
             for (j in 0 until array[i].size) {
-                min = Math.min(array[i][j],min)
-                max = Math.max(array[i][j],max)
+                min = Math.min(array[i][j], min)
+                max = Math.max(array[i][j], max)
             }
             sum += max - min
         }
@@ -46,8 +46,8 @@ object Day02 {
                 val num = array[i][j]
                 for (k in j + 1 until array[i].size) {
                     val num2 = array[i][k]
-                    val max = Math.max(num2,num)
-                    val min = Math.min(num2,num)
+                    val max = Math.max(num2, num)
+                    val min = Math.min(num2, num)
                     if (max % min == 0) {
                         sum += max / min
                         break
