@@ -15,11 +15,12 @@ object Day03 {
         if (squareRoot % 2 == 0) {
             squareRoot++
         }
+        val sideDistance = squareRoot + 1
         val bottomRight = squareRoot * squareRoot
-        val bottomLeft = bottomRight - squareRoot + 1
-        val topLeft = bottomLeft - squareRoot + 1
-        val topRight = topLeft - squareRoot + 1
-        val distanceToMiddle = (topLeft - topRight) / 2
+        val bottomLeft = bottomRight - sideDistance
+        val topLeft = bottomLeft - sideDistance
+        val topRight = topLeft - sideDistance
+        val distanceToMiddle = squareRoot / 2
         val middle: Int
         middle = when {
             number < topRight -> topRight - distanceToMiddle
