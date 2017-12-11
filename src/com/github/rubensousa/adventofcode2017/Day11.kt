@@ -55,7 +55,7 @@ object Day11 {
                     y -= 0.5f
                 }
             }
-            steps = Math.max(steps.toDouble(), Math.abs(Math.floor(y)) + Math.abs(Math.floor(x))).toInt()
+            steps = Math.max(steps.toDouble(), Math.floor(Math.abs(y) + Math.abs(x))).toInt()
         }
         return steps
     }
@@ -89,7 +89,7 @@ object Day11 {
                 }
             }
         }
-        return (Math.abs(Math.floor(y)) + Math.abs(Math.floor(x))).toInt()
+        return Math.floor(Math.abs(y) + Math.abs(x)).toInt()
     }
 
     private fun parseDirections(data: String): ArrayList<Int> {
