@@ -78,15 +78,15 @@ Third layer has numbers from 26 to 49
 
 Given a number n, we can determine which layer it belongs to, by calculating its square root, rounding it, and checking if it's an even number. If it's not, then we increment it so it becomes an odd number.
 
-<b>Example: n = 8
+<b>Example: n = 8</b>
 
 sqrt(8) ~ 2,828 -> rounding it becomes 3, so it's in the first layer.
 
-<b>Example: n = 33
+<b>Example: n = 33</b>
 
 sqrt(33) ~ 5,74 -> rounding it becomes 6. Since 6 is an even number, we increment it to 7 and now we know 33 is in the second layer.
 
-<b>We also know the values in each corner of the layer:
+<b>We also know the values in each corner of the layer:</b>
 
 Bottom right corner: squareRoot²
 
@@ -96,7 +96,7 @@ Top left corner: bottomLeft - squareRoot + 1
 
 Top right corner: topLeft - squareRoot + 1
 
-<b>Example: first layer
+<b>Example: first layer</b>
 
 squareRoot = 3
 
