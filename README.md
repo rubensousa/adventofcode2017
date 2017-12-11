@@ -14,10 +14,10 @@ if (nextIndex >= number.length) {
     nextIndex -= number.length
 }
 ```
-
+```
 Time - O(n)
-
 Space - O(1)
+```
 
 - Part 2:
 
@@ -25,4 +25,39 @@ Same thing, but instead of checking the next digit, we check the one n/2 steps a
 
 ```kotlin
 var nextIndex = i + number.length/2
+```
+
+## Day 02
+
+- Part 1
+
+Go through each line and find its minimum and maximum values. Then increment the sum with (maximum-minimum).
+
+```
+Time - O(nm) (n - lines / m - columns)
+Space - O(1)
+```
+
+- Part 2
+
+Go through each element in the line and check the ones after it. If they evenly divide, then increment the sum.
+
+```kotlin
+for (j in 0 until array[i].size - 1) {
+    val num = array[i][j]
+    for (k in j + 1 until array[i].size) {
+        val num2 = array[i][k]
+        val max = Math.max(num2, num)
+        val min = Math.min(num2, num)
+        if (max % min == 0) {
+            sum += max / min
+            break
+        }
+    }
+}
+```
+
+```
+Time - O(nm²) 
+Space - O(1)
 ```
