@@ -29,8 +29,8 @@ object Day12 {
         for (program in programs.indices) {
             var found = false
             for (parent in parents.keys) {
-                val childs = parents[parent]
-                if (childs?.contains(program)!!) {
+                val childs = parents[parent]!!
+                if (childs.contains(program)) {
                     found = true
                     break
                 }
