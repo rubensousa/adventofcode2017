@@ -64,7 +64,7 @@ object Day13 {
     fun main(args: Array<String>) {
         val data = parseLayers()
         println(getSeverity(data.layers, data.lastLayer))
-        println(getMinDelay(data.layers, data.lastLayer))
+        println(getMinDelay(data.layers))
     }
 
     private fun getSeverity(layers: Map<Int, Scanner>, lastLayer: Int): Int {
@@ -79,24 +79,20 @@ object Day13 {
         return severity
     }
 
-    private fun getMinDelay(layers: Map<Int, Scanner>, lastLayer: Int): Int {
+    private fun getMinDelay(layers: Map<Int, Scanner>): Int {
         var delay = 1
         var caught = true
-
         while (caught) {
             for (layer in layers.keys) {
                 val scanner = layers[layer]!!
                 val jumps = (scanner.size - 1) * 2
                 caught = (scanner.layer + delay).rem(jumps) == 0
                 if (caught) {
+                    delay++
                     break
                 }
             }
-            if (caught) {
-                delay++
-            }
         }
-
         return delay
     }
 
