@@ -21,18 +21,8 @@ object Day10 {
             }
             println(getResult(lengths))
         }
-        lengths.clear()
-        val data = line?.toCharArray()
-        if (data != null) {
-            for (number in data) {
-                lengths.add(number.toInt())
-            }
-            lengths.add(17)
-            lengths.add(31)
-            lengths.add(73)
-            lengths.add(47)
-            lengths.add(23)
-            println(getHash(lengths))
+        if (line != null) {
+            println(getHash(line))
         }
     }
 
@@ -44,6 +34,20 @@ object Day10 {
         }
 
         return array
+    }
+
+    fun getHash(text: String) : String{
+        val data = text.toCharArray()
+        val lengths = ArrayList<Int>()
+        for (number in data) {
+            lengths.add(number.toInt())
+        }
+        lengths.add(17)
+        lengths.add(31)
+        lengths.add(73)
+        lengths.add(47)
+        lengths.add(23)
+        return getHash(lengths)
     }
 
     private fun getHash(lengths: ArrayList<Int>): String {
