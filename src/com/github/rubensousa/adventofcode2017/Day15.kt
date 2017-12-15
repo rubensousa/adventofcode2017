@@ -11,11 +11,11 @@ object Day15 {
         val factorB = 48271L
         val a = 277L
         val b = 349L
-        part1(a, b, factorA, factorB)
-        part2(a, b, factorA, factorB)
+        println(part1(a, b, factorA, factorB))
+        println(part2(a, b, factorA, factorB))
     }
 
-    private fun part1(a: Long, b: Long, factorA: Long, factorB: Long) {
+    private fun part1(a: Long, b: Long, factorA: Long, factorB: Long): Int {
         var count = 0
         var currentA = a
         var currentB = b
@@ -26,10 +26,10 @@ object Day15 {
                 count++
             }
         }
-        println(count)
+        return count
     }
 
-    private fun part2(a: Long, b: Long, factorA: Long, factorB: Long) {
+    private fun part2(a: Long, b: Long, factorA: Long, factorB: Long): Int {
         var count = 0
         var currentA = a
         var currentB = b
@@ -46,7 +46,7 @@ object Day15 {
             currentA = generate(currentA, factorA)
             currentB = generate(currentB, factorB)
         }
-        println(count)
+        return count
     }
 
     private fun generate(previousValue: Long, factor: Long): Long {
