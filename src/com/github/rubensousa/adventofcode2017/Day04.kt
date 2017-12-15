@@ -4,7 +4,8 @@ package com.github.rubensousa.adventofcode2017
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
-import java.util.HashMap
+import java.util.*
+import kotlin.collections.HashSet
 
 object Day04 {
 
@@ -67,48 +68,14 @@ object Day04 {
     }
 
     private fun checkAnagrams(words: List<String>): Boolean {
-        for (i in 0 until words.size - 1) {
-            val frequency = HashMap<Char, Int>()
-            for (c in 0 until words[i].length) {
-                val character = words[i][c]
-                val freq = frequency[character]
-                if (freq == null) {
-                    frequency.put(character, 1)
-                } else {
-                    frequency.put(character, freq + 1)
-                }
-            }
-            for (j in i + 1 until words.size) {
-                if (words[j].length == words[i].length) {
-                    val frequencyTable = HashMap<Char, Int>()
-                    for (c in 0 until words[j].length) {
-                        val character = words[j][c]
-                        val freq = frequencyTable[character]
-                        if (freq == null) {
-                            frequencyTable.put(character, 1)
-                        } else {
-                            frequencyTable.put(character, freq + 1)
-                        }
-                    }
-                    var equalFrequencies = 0
-                    for (key in frequencyTable.keys) {
-                        if (frequency.containsKey(key)) {
-                            val f1 = frequencyTable[key]
-                            val f2 = frequency[key]
-                            if (f1 == f2) {
-                                equalFrequencies++
-                            }
-                        } else {
-                            break
-                        }
-                    }
-                    if (equalFrequencies == frequencyTable.size) {
-                        return false
-                    }
-                }
+        val set = HashSet<String>()
+        for (i in words.indices) {
+            val chars = words[i].toCharArray()
+            Arrays.sort(chars)
+            if (!set.add(String(chars))) {
+                return false
             }
         }
         return true
     }
-
 }
