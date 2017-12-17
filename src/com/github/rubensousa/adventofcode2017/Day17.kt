@@ -1,11 +1,8 @@
 package com.github.rubensousa.adventofcode2017
 
-import java.io.IOException
 
 object Day17 {
 
-
-    @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
         println(spin(337))
