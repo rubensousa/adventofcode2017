@@ -73,10 +73,8 @@ object Day20 {
     private fun getNearestToZero(particles: ArrayList<Particle>): Int {
         var minParticle = particles[0]
         var minIndex = 0
-        for (particle in particles) {
-            moveParticle(particle, 100000)
-        }
         for (i in particles.indices) {
+            moveParticle(particles[i], 100000)
             if (particles[i].distanceToOrigin() < minParticle.distanceToOrigin()) {
                 minParticle = particles[i]
                 minIndex = i
