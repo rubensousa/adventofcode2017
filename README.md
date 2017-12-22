@@ -147,7 +147,7 @@ Space - O(w)
 
 - Part 1
 
-Just performing the instructions until the current index points to a position out of bounds:
+Just keep performing the instructions until the current index points to a position out of bounds:
 
 ```kotlin
 private fun countSteps(array: ArrayList<Int>): Int {
