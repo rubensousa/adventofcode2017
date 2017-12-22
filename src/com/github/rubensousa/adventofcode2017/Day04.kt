@@ -52,30 +52,18 @@ object Day04 {
             val words = passphrase.split(" ".toRegex())
             var valid = true
             for (word in words) {
-                if (wordsSet.contains(word)) {
+                val chars = word.toCharArray()
+                Arrays.sort(chars)
+                if (!wordsSet.add(String(chars))) {
                     valid = false
                     break
-                } else {
-                    wordsSet.add(word)
                 }
             }
-            if (valid && checkAnagrams(words)) {
+            if (valid) {
                 validPassphrases++
             }
             wordsSet.clear()
         }
         return validPassphrases
-    }
-
-    private fun checkAnagrams(words: List<String>): Boolean {
-        val set = HashSet<String>()
-        for (i in words.indices) {
-            val chars = words[i].toCharArray()
-            Arrays.sort(chars)
-            if (!set.add(String(chars))) {
-                return false
-            }
-        }
-        return true
     }
 }
