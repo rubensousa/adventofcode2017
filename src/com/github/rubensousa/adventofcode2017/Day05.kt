@@ -24,35 +24,27 @@ object Day05 {
         println(countStepsPart2(integersSecond))
     }
 
-    fun countStepsPart2(array: ArrayList<Int>): Int {
+    private fun countSteps(array: ArrayList<Int>): Int {
         var steps = 0
         var index = 0
-        while (steps < Integer.MAX_VALUE) {
+        while (index < array.size) {
             val jumps = array[index]
-            if (jumps >= 3) {
-                array[index] = jumps - 1
-            } else {
-                array[index] = jumps + 1
-            }
-            if (index + jumps >= array.size) {
-                steps++
-                break
-            }
+            array[index]++
             index += jumps
             steps++
         }
         return steps
     }
 
-    fun countSteps(array: ArrayList<Int>): Int {
+    private fun countStepsPart2(array: ArrayList<Int>): Int {
         var steps = 0
         var index = 0
-        while (steps < Integer.MAX_VALUE) {
+        while (index < array.size) {
             val jumps = array[index]
-            array[index] = jumps + 1
-            if (index + jumps >= array.size) {
-                steps++
-                break
+            if (jumps >= 3) {
+                array[index]--
+            } else {
+                array[index]++
             }
             index += jumps
             steps++
