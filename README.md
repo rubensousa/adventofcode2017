@@ -124,5 +124,22 @@ To solve part 2, we can build the spiral ourselves and then just fill it from th
 Time - O(log(n))? Not sure 
 Space - O(n)
 ```
+## Day 04
 
+- Part 1
 
+Just loop through each passphrase and then insert each word into a hash set. If a word already exists in it, then the passphrase isn't valid.
+
+```
+Time - O(nw) (n - passphrases / w - words) 
+Space - O(w)
+```
+
+- Part 2
+
+Same thing as part 1, but with an extra anagram check. To check if a list of words contains any anagram, we can sort the words and then insert them in a hash set.
+
+```
+Time - O(n*w*slogs) (n - passphrases / w - words / s - average word size) 
+Space - O(w)
+```
