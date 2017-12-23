@@ -131,7 +131,7 @@ Space - O(n)
 Just loop through each passphrase and then insert each word into a hash set. If a word already exists in it, then the passphrase isn't valid.
 
 ```
-Time - O(nw) (n - passphrases / w - words) 
+Time - O(n*w) (n - passphrases / w - words) 
 Space - O(w)
 ```
 
@@ -140,6 +140,48 @@ Space - O(w)
 Same thing as part 1, but with an extra anagram check. To check if a list of words contains any anagram, we can sort the words and then insert them in a hash set.
 
 ```
-Time - O(n*w*slogs) (n - passphrases / w - words / s - average word size) 
+Time - O(n*w*s*log(s)) (n - passphrases / w - words / s - average word size) 
 Space - O(w)
+```
+## Day 05
+
+- Part 1
+
+Just keep performing the instructions until the current index points to a position out of bounds:
+
+```kotlin
+private fun countSteps(array: ArrayList<Int>): Int {
+    var steps = 0
+    var index = 0
+    while (index < array.size) {
+        val jumps = array[index]
+        array[index]++
+        index += jumps
+        steps++
+    }
+    return steps
+}
+```
+
+```
+Time - ?
+Space - O(1)
+```
+
+- Part 2
+
+Same thing as part 1, but instead of increasing the last position by 1, it'll depend on the value it had before:
+
+```kotlin
+if (jumps >= 3) {
+    array[index]--
+} else {
+    array[index]++
+}
+```
+
+
+```
+Time - ?
+Space - O(1)
 ```
