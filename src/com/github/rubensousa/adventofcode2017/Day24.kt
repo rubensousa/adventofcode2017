@@ -125,7 +125,6 @@ object Day24 {
         for (component in components) {
             if (component.firstPort == 0) {
                 roots.add(ComponentNode(component))
-            } else {
             }
             nodes.add(ComponentNode(component))
         }
@@ -133,11 +132,9 @@ object Day24 {
         for (root in roots) {
             root.firstPortConnected = true
             val result = getMaxLengthAndStrength(root, nodes)
-            if (result.length > length) {
-                strength = result.strength
-                length = result.length
-            } else if (result.length == length) {
+            if (result.length >= length) {
                 strength = Math.max(result.strength, strength)
+                length = result.length
             }
         }
 
